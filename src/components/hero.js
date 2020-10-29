@@ -45,7 +45,7 @@ class MainHero extends Component{
 	}} />
 
           <div style = {{paddingTop:'100px'}}> 
-          <Image roundedCircle style = {{height:'400px' , width:'400px', zIndex:'100',  position: 'relative', border:'6px solid black'}}src={require('/Users/sahil_21/Desktop/new_website/new_website2/new_website2/src/Assets/ImageForAbout.png')} ></Image>
+          <Image roundedCircle style = {{height:'400px' , width:'400px', zIndex:'100',  position: 'relative', border:'6px solid black'}}src={require('../Assets/ImageForAbout.png')} ></Image>
           
           </div>
          <Container style = {{zIndex:'100',  position: 'relative'}}>

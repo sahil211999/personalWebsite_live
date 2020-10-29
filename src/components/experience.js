@@ -9,7 +9,7 @@ import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 library.add( faBriefcase);
 
 
-const bgImage = '/Users/sahil_21/Desktop/new_website/new_website2/new_website2/src/Assets/CargiIl_Image.png';
+
 
 
 
@@ -21,7 +21,7 @@ class Experience extends Component{
   render(){
     return(
       <div>
-       <div fluid style={{height:'400px',opacity: '0.5', padding:'0px' ,backgroundImage: `url(${require('/Users/sahil_21/Desktop/new_website/new_website2/new_website2/src/Assets/workImage.jpeg')})` }}>     
+       <div fluid style={{height:'400px',opacity: '0.5', padding:'0px' ,backgroundImage: `url(${require('../Assets/workImage.jpeg')})` }}>     
          <div style = {{opacity: '6'}}>
          <h1 style = {{color:'white', fontSize:'60px', paddingTop:'150px'}}> Experience </h1>
          </div>
