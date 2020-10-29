@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
-import Zoom from 'react-reveal/Zoom';
+
 import { Container } from 'react-bootstrap';
-import Image from 'react-bootstrap/Image'
-import Fade from 'react-reveal/Fade';
+
 import Reveal from 'react-reveal/Reveal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core'
