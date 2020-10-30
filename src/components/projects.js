@@ -57,7 +57,7 @@ class Projects extends Component{
          <p> This is an application that I am currently working on to able to provide a medium through which small buisnesses and vendors could receive feedback from amazon with a single click of the button to get feedback from the this application. I am building this application on React with flask on the backend along with the help of NLP libraries like spaCy, NLTk. 
          </p>
 
-          <p style = {{color:'white'}}>
+          {/* <p style = {{color:'white'}}>
          alsnclalsnclanlksjcalcnlslcsklancasksjkcj 
          anckslnckancskknscaknksc
          akmclcmslasl kq ,ejcll wakcjnqwonc;QNCILWBKckcsncjhshc w skc skvchlw evh
@@ -65,7 +65,7 @@ class Projects extends Component{
          anckslnckancskknscaknksc
          akmclcmslasl kq ,ejcll wakcjnqwonc;QNCILWBKckcsncjhshc w skc skvchlw evh
          
-         </p>
+         </p> */}
          
          
          
