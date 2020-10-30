@@ -23,7 +23,7 @@ class MainHero extends Component{
   
   render(){
     return(
-      <div style = {{justifyContent:'center', fontSize:'60px', backgroundColor:'#758AA2', width:'100%', height:'900px', color:'white', fontWeight:'bold', position:'relative'}}>
+      <div style = {{justifyContent:'center',paddingBottom:'50px',fontSize:'60px', backgroundColor:'#758AA2', width:'100%',  color:'white', fontWeight:'bold', position:'relative'}}>
          <Particles id ="lolo" style={{  position: 'absolute', top: '0', left: '0' }}
     params={{
 	    "particles": {
@@ -44,13 +44,13 @@ class MainHero extends Component{
 	    }
 	}} />
 
-          <div style = {{paddingTop:'100px'}}> 
-          <Image roundedCircle style = {{height:'400px' , width:'400px', zIndex:'100',  position: 'relative', border:'6px solid black'}}src={require('../Assets/ImageForAbout.png')} ></Image>
+          <div style = {{paddingTop:'100px', }}> 
+          <Image roundedCircle style = {{height:'40%' , width:'40%', zIndex:'100',  position: 'relative', border:'6px solid black'}}src={require('../Assets/ImageForAbout.png')} ></Image>
           
           </div>
-         <Container style = {{zIndex:'100',  position: 'relative'}}>
+         <Container style = {{zIndex:'1',  position: 'relative', paddingBottom:'100px'}}>
          
-        <Row className="justify-content-md-center" ><Col lg="2"> <FontAwesomeIcon icon={['fab', 'github']}  size="xs" color="black"/> </Col> <Col lg="2" > <FontAwesomeIcon icon={faEnvelope}  size="xs"/> </Col> <Col lg="2"> <FontAwesomeIcon icon={['fab', 'linkedin']} size="xs" color="#0A79DF"/></Col> </Row>
+        <Row className="justify-content-md-center" ><Col lg="2"> <a href="https://github.com/sahil211999"> <FontAwesomeIcon id = "github" icon={['fab', 'github']}  size="xs" color="black"   /> </a> </Col> <Col lg="2" > <a href="/faq"> <FontAwesomeIcon  id = "evenlope" icon={faEnvelope}  size="xs"/></a>  </Col> <Col lg="2"> <a href="https://www.linkedin.com/in/sahil-sashi-256971179/"> <FontAwesomeIcon id = "linkedIn" icon={['fab', 'linkedin']} size="xs" color="#0A79DF"/></a> </Col> </Row>
           <Typewriter
             onInit={(typewriter) => {
             typewriter.typeString('Hi! My name is Sahil. ')

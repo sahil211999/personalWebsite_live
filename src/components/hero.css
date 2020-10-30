@@ -11,3 +11,15 @@
     transform: rotate(-45deg);
     box-sizing: border-box;
   }
+
+  #github, #evenlope, #linkedIn {
+    transition: all .2s ease-in-out; 
+    
+  }
+
+  #github:hover , #evenlope:hover , #linkedIn:hover  {
+   transform: scale(2); 
+    
+  }
+
+    
