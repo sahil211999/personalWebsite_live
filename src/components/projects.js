@@ -40,7 +40,7 @@ class Projects extends Component{
 
       <div style = {{backgroundColor:'#535C68'}}> 
          <Container style={{padding:'50px'}} >
-         <Row style = {{paddingBottom:'50px', fontWeight:'bolder'}}><Col><h1 style = {{fontSize:'50px'}}>HomeBrew Shop</h1></Col></Row>
+         <Row style = {{paddingBottom:'50px', fontWeight:'bolder'}}><Col><h1 style = {{fontSize:'50px', color:'white'}}>HomeBrew Shop</h1></Col></Row>
          <Row><Col  style={{ }}> <Image src={require('../Assets/Screen Shot 2020-10-26 at 3.54.24 PM.png')}  rounded style ={{height:'100%', width:'100%', border:'6.0px solid black' }} /> </Col> <Col lg={true} style={{ color:'white', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}>
          <p> A project aimed at providing access to Homebrew to a wider base of users so that they could use Homebrew for everyday tasks.
           I built this project during a Hackathon(HackIllinois 2020) in Collaborations with HomeBrew contributors who were present as mentors during the Hackathon. This application is built on the open source framework of Electron strapped with React and NodeJs. I am currently working to get a permanent and viable application, which could possibly allow a lot of people to be able to download this application and use Homebrew without the Hassle of using and interacting with the terminal.</p> 
@@ -79,7 +79,7 @@ class Projects extends Component{
       
           <div style = {{backgroundColor:'#535C68'}}> 
          <Container style={{padding:'50px'}} >
-         <Row style = {{paddingBottom:'50px', fontWeight:'bolder'}}><Col><h1 style = {{fontSize:'50px'}}>HomeBrew Shop</h1></Col></Row>
+         <Row style = {{paddingBottom:'50px', fontWeight:'bolder'}}><Col><h1 style = {{fontSize:'50px', color:'white'}}>Crazy Tic Tac Toe</h1></Col></Row>
          <Row><Col  style={{ }}> <Image src={require('../Assets/Screen Shot 2020-10-19 at 11.40.40 AM.png')}  rounded style ={{height:'100%', width:'100%', border:'6.0px solid black' }} /> </Col> <Col lg={true} style={{ color:'white', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}>
          <p> This is a more fun version of tic tac toe that I developed on the open frame works platform. It uses some external animation libraries like Box2d.</p>
          </Col> </Row>

@@ -49,10 +49,10 @@ class Leadership extends Component{
           Worked as a student ambassador for the College of Engineering, organizing events and fundraisers along with managing special requests by made alumni. </Col> 
          </Row>
           <Row>
-         <Col lg={true}  sm={12}> </Col>
-         <Col lg={true}  sm={12} style={{ color:'black', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' , paddingBottom:'5%'  }}> <h4 style = {{padding:'10px'}}> Technical Chair, Triangle </h4>  <Image src={require('../Assets/triamgleIma.jpeg')}  rounded style ={{height:'50%', width:'80%', border:'5.0px solid black' }} /> <pr> Resolved technical issues like managing WiFi, house server and other equipment in a house of 35 residents. </pr>   </Col> 
-        <Col lg={true}  sm = {12}style={{ color:'black', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' , paddingBottom:'10%'}}> <h4 style = {{padding:'10px'}}> League of Linguistics </h4>  <Image src={require('../Assets/lolimag.png')}  rounded style ={{height:'55%', width:'80%', border:'5.0px solid black' }} />  <pr> Actively lead projects on various teams in the field of computational linguistics.  </pr>   </Col> 
-        <Col lg={true}  sm={12}> </Col>
+         <Col lg={2}  sm={12}> </Col>
+         <Col lg={4}  sm={12} style={{ color:'black', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' , paddingBottom:'5%'  }}> <h4 style = {{padding:'10px'}}> Technical Chair, Triangle </h4>  <Image src={require('../Assets/triamgleIma.jpeg')}  rounded style ={{height:'50%', width:'80%', border:'5.0px solid black' }} /> <pr> Resolved technical issues like managing WiFi, house server and other equipment in a house of 35 residents. </pr>   </Col> 
+        <Col lg={4}  sm = {12}style={{ color:'black', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' , paddingBottom:'10%'}}> <h4 style = {{padding:'10px'}}> League of Linguistics </h4>  <Image src={require('../Assets/lolimag.png')}  rounded style ={{height:'55%', width:'80%', border:'5.0px solid black' }} />  <pr> Actively lead projects on various teams in the field of computational linguistics.  </pr>   </Col> 
+        <Col lg={2}  sm={12}> </Col>
         </Row>
         </Container>
           </div>
