@@ -30,7 +30,7 @@ class Experience extends Component{
          
          <FontAwesomeIcon icon={faBriefcase}  size="3x" />
         <Container style = {{paddingTop:'100px'}}>
-        I have software development experience from 2 internsips. I have been able to gain in-depth knowledge in full stack mobile and web development in various technologies. Working across multiple teams, I always try to push myself to make significant contributions at the places I have worked. Currently I am trying to gain impactful research experience by working alongside with professors at my University.
+        With nearly 3 years of industry experience as a software engineer, I have built and shipped production systems spanning full-stack development, distributed microservices, and cloud infrastructure. More recently, my work has evolved toward machine learning and AI — from building semantic search pipelines and RAG systems to conducting NLP research. I am passionate about leveraging my strong engineering foundation to build intelligent, scalable AI-driven products.
       
         </Container>
       </div>
@@ -42,10 +42,13 @@ class Experience extends Component{
      
          <div > 
          <Container style={{padding:'50px'}} >
-         <Row style = {{paddingBottom:'50px', fontWeight:'bolder'}}><Col><h1 style = {{fontSize:'50px', color:'white'}}>Cargill Innovation Lab</h1></Col></Row>
-         <Row><Col  style={{ }}> <Image src={require('../Assets/cargill-1.png')}  rounded style ={{height:'100%', width:'100%', border:'1.0px solid black' }} /> </Col> <Col lg={true} style={{ color:'white', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}><p>I worked as a full stack developer collaborating with UX designers, buisness analysts and actual users from focus groups to develop products which could one day be a part of the array of digital services Cargill provides. </p> 
-         <p> For my core project, I developed a responsive web app for animal feed mills to improve user experience. Apart from my core team project, I contributed to another hardware project at the Cargill Innovation, developing the UI for a hardware project, which was aimed at improving order accuracy in quick service restaurants. This prototype will potetially be pitched to YUM brands. </p>
-         <p> I also developed a prototype feedmill truck driver app for tracking order and optmizing routes</p>
+         <Row style = {{paddingBottom:'50px', fontWeight:'bolder'}}><Col><h1 style = {{fontSize:'50px', color:'white'}}>Axon</h1><h3 style = {{color:'#dfe6e9'}}>Software Engineer &nbsp;|&nbsp; Seattle, WA &nbsp;|&nbsp; Jan 2023 – Oct 2025</h3></Col></Row>
+         <Row><Col lg={true} style={{ color:'white', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}>
+         <p><strong style={{color:'#74b9ff'}}>AI & Search</strong></p>
+         <p>Engineered a semantic image retrieval pipeline by generating embedding vectors and indexing them in a vector database optimized for k-Nearest Neighbor (k-NN) similarity search. Implemented a query embedding and similarity matching flow using cosine distance to return top-K nearest neighbors with high semantic relevance. Fine-tuned a debiasing layer to sanitize incoming queries, mitigating biased or out-of-scope search patterns. Designed a Retrieval-Augmented Generation (RAG) system combining vector-based semantic retrieval with LLM generation, enabling grounded question answering over domain-specific evidence data with relevance filtering and safety constraints.</p>
+         
+         <p><strong style={{color:'#74b9ff'}}>Full-Stack & Infrastructure</strong></p>
+         <p>Developed a new Golang microservice to enable evidence search, replacing a legacy Scala-based microservice. Enhanced search functionality by optimizing the Solr search architecture across Axon products, achieving a 20% reduction in query response time. Designed and implemented an asynchronous cron job system using Azure Service Bus to manage task queues for large-scale search indexing workflows. Managed monthly production releases on Azure Kubernetes Service (AKS) and administered Kubernetes clusters including resource allocation, autoscaling, and configuration of namespaces, deployments, and services.</p>
          </Col> </Row>
         
          </Container>
@@ -55,26 +58,40 @@ class Experience extends Component{
         
          <div > 
          <Container style={{padding:'50px'}} >
-         <Row style = {{ paddingBottom:'50px' ,fontWeight:'bolder'}}><Col ><h1 style = {{fontSize:'50px'}}>QA infotech</h1></Col></Row>
-         <Row><Col lg={true} style={{ fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}> <p> I worked as a backend developer on a full-stack development team. I worked on the Java SpringBoot framework, developing APIs for a farm risk management app. I contributed in designed and architecting the backend database for the APIs and also helped in deployment of the the application. I also worked on quality assurance testing and debugging code for streamlining the application. </p> </Col> <Col lg={true}  >
-         <Image src={require('../Assets/QaInfotech.jpeg')}  rounded style ={{height:'100%', width:'100%', border:'6px solid black' }} />
+         <Row style = {{ paddingBottom:'50px' ,fontWeight:'bolder'}}><Col ><h1 style = {{fontSize:'50px'}}>Amazon (AWS)</h1><h3 style = {{color:'#636e72'}}>Software Development Engineer Intern &nbsp;|&nbsp; Seattle, WA &nbsp;|&nbsp; May 2022 – Aug 2022</h3></Col></Row>
+         <Row><Col lg={true} style={{ fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}> <p>Developed multiple APIs on AWS QLDB and Brazil (a framework similar to Java SpringBoot) for service escalation diagnostics, reducing weekly on-call diagnostic time. Created a pipeline to extract macro and micro level data about customer usage behavior for the EC2 launch templates team. Developed the internal architecture to manage access and metrics for the APIs to be callable by more than 10 teams under AWS EC2 core.</p> </Col> </Row>
+         </Container>
+          </div>
+      </div>
+
+      <div style = {{backgroundColor:'#535C68'}}>
+     
+     
+         <div > 
+         <Container style={{padding:'50px'}} >
+         <Row style = {{paddingBottom:'50px', fontWeight:'bolder'}}><Col><h1 style = {{fontSize:'50px', color:'white'}}>Goldman Sachs</h1><h3 style = {{color:'#dfe6e9'}}>Software Engineering Intern &nbsp;|&nbsp; New York, NY &nbsp;|&nbsp; June 2021 – Aug 2021</h3></Col></Row>
+         <Row><Col lg={true} style={{ color:'white', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}>
+         <p>Worked on the account onboarding team in Asset Management. Developed APIs and a tracking dashboard to streamline and track the account onboarding process for asset management clients using SpringBoot, RxJava, and React, leading to a 4-hour weekly reduction in time spent on manual account onboarding and reducing onboarding time by 30%. Wrote unit tests and release tests using JUnit and Mockito to release the feature into production for dozens of Goldman Asset-Management clients.</p>
          </Col> </Row>
+        
+         </Container>
+          </div>
+      </div>
+      <div style = {{backgroundColor:'white'}}>
+        
+         <div > 
+         <Container style={{padding:'50px'}} >
+         <Row style = {{ paddingBottom:'50px' ,fontWeight:'bolder'}}><Col ><h1 style = {{fontSize:'50px'}}>Cargill Inc.</h1><h3 style = {{color:'#636e72'}}>Software Engineering Intern &nbsp;|&nbsp; Champaign, IL &nbsp;|&nbsp; May 2020 – April 2021</h3></Col></Row>
+         <Row><Col lg={true} style={{ fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}> <p>Developed, tested, and designed software in collaboration with UX designers and business analysts in an Agile environment. Built a native iOS and Android application for Cargill Risk Management, allowing traders to view positions. Developed a responsive web app for animal feed mills on the React, Bootstrap, and .NET Core stack to provide clients with an improved shopping experience. Created a web app for a hardware-based project to improve order accuracy in quick service restaurants by 50% — a prototype potentially to be used by YUM Brands. Built a truck delivery driver app in Flask that generates optimized routes using the Maps API and the traveling salesman algorithm.</p> </Col> </Row>
          </Container>
           </div>
       </div>
 
       <div style = {{backgroundColor:'#535C68'}}> 
          <Container style={{padding:'50px'}} >
-         <Row style = {{paddingBottom:'50px', fontWeight:'bolder'}}><Col><h1 style = {{fontSize:'50px', color:'white'}}>NLP Research at UIUC</h1></Col></Row>
-         <Row><Col  style={{ }}> <Image src={require('../Assets/1_tYZ8_SodwSUPJTuWQs-CoA.jpeg')}  rounded style ={{height:'100%', width:'100%', border:'6px solid black' }} /></Col> <Col lg={true} style={{ color:'white', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}>
-         <p style = {{color:'#535C68'}}>dnkjncaknjacaknakncaknnc neqacnkcn  ancknckac jknc ncaknckanc ja cnakjcekacnkckajck jncuaknceincoane eovnakn  </p>
-         <p style = {{color:'#535C68'}}>dnkjncaknjacaknakncaknnc neqacnkcn  ancknckac jknc ncaknckanc ja cnakjceka </p>
-         
-         
-         <p> Working to detect human emotions objectively in fictional novels. Currently I am indexing, mining and labelling data to train models, and also defining the input variables for modelling. This research is a pre-cursor to a broader experiment of expanding the existing bandwidth of the realm of natural language processing beyond the current existing knowledge. </p> 
-        
-         <p style = {{color:'#535C68'}}>dnkjncaknjacaknakncaknnc neqacnkcn  ancknckac jknc ncaknckanc ja cnakjcekacnkckajck jncuaknceincoane eovnakn  </p>
-         <p style = {{color:'#535C68'}}></p>
+         <Row style = {{paddingBottom:'50px', fontWeight:'bolder'}}><Col><h1 style = {{fontSize:'50px', color:'white'}}>University of Illinois</h1><h3 style = {{color:'#dfe6e9'}}>Research Assistant &nbsp;|&nbsp; Urbana, IL &nbsp;|&nbsp; June 2020 – Dec 2020</h3></Col></Row>
+         <Row><Col lg={true} style={{ color:'white', fontFamily:'Montserrat', fontSize:'20px', fontWeight:'bolder' }}>
+         <p>Formulated sentiment analysis as a supervised text classification task, engineering Bag-of-Words and TF-IDF features and establishing strong probabilistic baselines (Naive Bayes) for comparison. Designed and executed controlled experiments benchmarking classical models against PyTorch-based neural networks, using consistent evaluation protocols to analyze generalization. Built an end-to-end, reproducible experimentation pipeline in PyTorch for training, validation, and metrics tracking, evaluating models with precision, recall, F1, and inference efficiency tradeoffs.</p>
          </Col> </Row>
         
          </Container>

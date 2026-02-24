@@ -22,7 +22,7 @@ class AboutSect extends Component{
   <Reveal effect="fadeInUp">
    <Container>
    <FontAwesomeIcon icon={faUser}  size="6x"/>
-  <Row> <Col large={true} style = {{fontSize:'30px', fontFamily: 'Montserrat', fontColor:'#2C3335' , fontWeight:'bolder', paddingTop:'100px' }}> I am a 20 year old college student, studying computer science and linguistics at University of Illinois at Urbana Champaign. I have combined industry experience of about 9 - 12 months in software development. I am currently actively seeking summer 2021 internships. My particularly interested in Full-Stack mobile and web development as well as in natural language processing. </Col> </Row>
+  <Row> <Col large={true} style = {{fontSize:'30px', fontFamily: 'Montserrat', fontColor:'#2C3335' , fontWeight:'bolder', paddingTop:'100px' }}> I am a Masters student in Computer Science at the University of Illinois at Urbana-Champaign, with a background in Computer Science and Linguistics. I have nearly 3 years of industry experience as a software engineer at Axon, along with internships at Amazon (AWS) and Goldman Sachs. My work has spanned full-stack development, distributed microservices, and cloud infrastructure, and has more recently evolved toward machine learning and AI — including semantic search pipelines, retrieval-augmented generation, and NLP research. I am currently seeking summer 2026 internships. </Col> </Row>
     </Container>
  </Reveal>
   </div>
