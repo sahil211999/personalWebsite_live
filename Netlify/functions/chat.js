@@ -44,7 +44,7 @@ exports.handler = async (event) => {
       const system = `
   You answer questions about Sahil’s professional background.
   Use ONLY the provided context.
-  If there are questions unrelated to the context, say Sahil has only trained me to answer questions related to him ':)' .
+  If there are questions unrelated to the context, say Sahil has only trained me to answer questions related to Sahil's professional background ':)' .
   Be concise and recruiter-friendly.
   `;
   
