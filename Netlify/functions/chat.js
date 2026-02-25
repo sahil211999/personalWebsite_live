@@ -17,6 +17,16 @@ exports.handler = async (event) => {
       }
   
       const apiKey = process.env.OPENAI_API_KEY;
+
+      if (!apiKey) {
+        return {
+          statusCode: 500,
+          body: JSON.stringify({
+            error:
+              "Missing OPENAI_API_KEY environment variable. Set this in your Netlify site settings.",
+          }),
+        };
+      }
   
       const profile = `With nearly 3 years of industry experience as a software engineer, I have built and shipped production systems spanning full-stack development, distributed microservices, and cloud infrastructure. 
       More recently, my work has evolved toward machine learning and AI — from building semantic search pipelines and RAG systems to conducting NLP research. 
@@ -57,13 +67,58 @@ exports.handler = async (event) => {
       });
   
       const data = await r.json();
-  
+
+      if (!r.ok) {
+        return {
+          statusCode: r.status,
+          body: JSON.stringify({
+            error:
+              (data && data.error && (data.error.message || data.error)) ||
+              `Upstream error with status ${r.status}`,
+          }),
+        };
+      }
+
+      let answer = "";
+
+      if (Array.isArray(data.output)) {
+        const textChunks = [];
+
+        for (const item of data.output) {
+          if (!item || !Array.isArray(item.content)) continue;
+
+          for (const part of item.content) {
+            if (part == null) continue;
+
+            if (part.type === "output_text" && typeof part.text === "string") {
+              textChunks.push(part.text);
+            } else if (
+              part.type === "output_text" &&
+              part.output_text &&
+              typeof part.output_text.text === "string"
+            ) {
+              textChunks.push(part.output_text.text);
+            } else if (part.text && typeof part.text.value === "string") {
+              textChunks.push(part.text.value);
+            }
+          }
+        }
+
+        answer = textChunks.join("\n").trim();
+      }
+
+      if (!answer && typeof data.output_text === "string") {
+        answer = data.output_text.trim();
+      }
+
+      if (!answer) {
+        answer = "Sorry — I couldn't generate a response.";
+      }
+
       return {
         statusCode: 200,
         body: JSON.stringify({
-          answer:
-            data.output_text ||
-            "Sorry — I couldn't generate a response.",
+          answer,
         }),
       };
     } catch (e) {
