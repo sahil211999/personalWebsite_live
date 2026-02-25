@@ -5,16 +5,16 @@ import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col' 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faMicrophone, faMicrophoneSlash, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import './hero.css'
 
 import Particles from 'react-particles-js';
 
-
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-library.add(fab, faEnvelope);
+library.add(fab, faEnvelope, faMicrophone, faMicrophoneSlash, faVolumeUp);
+
+const PROMPT_TEXT = "Hi! I am Sahil's AI assistant. Ask me anything about his professional background.";
 
 async function askSahil(msg) {
   const res = await fetch("/.netlify/functions/chat", {
@@ -32,9 +32,68 @@ class MainHero extends Component{
     question: '',
     answer: '',
     loading: false,
-    error: ''
+    error: '',
+    isListening: false,
+    isSpeaking: false,
   }
-  
+
+  recognitionRef = null;
+  autoSendTimeoutRef = null;
+
+  speakInputText = () => {
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
+    const { question } = this.state;
+    if (!question.trim()) return;
+    if (this.state.isSpeaking) {
+      window.speechSynthesis.cancel();
+      this.setState({ isSpeaking: false });
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(question.trim());
+    utterance.rate = 0.95;
+    utterance.onend = () => this.setState({ isSpeaking: false });
+    utterance.onerror = () => this.setState({ isSpeaking: false });
+    window.speechSynthesis.speak(utterance);
+    this.setState({ isSpeaking: true });
+  }
+
+  startSpeechInput = () => {
+    if (typeof window === 'undefined') return;
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      this.setState({ error: 'Speech recognition is not supported in this browser.' });
+      return;
+    }
+    if (this.state.isListening) {
+      if (this.recognitionRef) this.recognitionRef.stop();
+      this.setState({ isListening: false });
+      return;
+    }
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+    recognition.onresult = (e) => {
+      let transcript = '';
+      for (let i = 0; i < e.results.length; i++) {
+        transcript += e.results[i][0].transcript;
+      }
+      this.setState({ question: transcript });
+      if (this.autoSendTimeoutRef) clearTimeout(this.autoSendTimeoutRef);
+      this.autoSendTimeoutRef = setTimeout(() => {
+        if (!this.state.question.trim()) return;
+        this.handleAsk();
+        this.setState({ question: '' });
+        this.autoSendTimeoutRef = null;
+      }, 500);
+    };
+    recognition.onend = () => this.setState({ isListening: false });
+    recognition.onerror = () => this.setState({ isListening: false });
+    this.recognitionRef = recognition;
+    recognition.start();
+    this.setState({ isListening: true, error: '' });
+  }
+
   handleInputChange = (e) => {
     this.setState({ question: e.target.value });
   }
@@ -43,6 +102,11 @@ class MainHero extends Component{
     this.setState({ question: text }, () => {
       this.handleAsk();
     });
+  }
+
+  componentWillUnmount() {
+    if (this.autoSendTimeoutRef) clearTimeout(this.autoSendTimeoutRef);
+    if (this.recognitionRef) this.recognitionRef.stop();
   }
 
   handleAsk = async () => {
@@ -95,20 +159,35 @@ class MainHero extends Component{
          <Container style = {{zIndex:'1',  position: 'relative', paddingBottom:'100px'}}>
          
         <Row className="justify-content-md-center" ><Col lg="2"> <a href="https://github.com/sahil211999"> <FontAwesomeIcon id = "github" icon={['fab', 'github']}  size="xs" color="black"   /> </a> </Col> <Col lg="2" > <a href="/faq"> <FontAwesomeIcon  id = "evenlope" icon={faEnvelope}  size="xs"/></a>  </Col> <Col lg="2"> <a href="https://www.linkedin.com/in/sahil-sashi-256971179/"> <FontAwesomeIcon id = "linkedIn" icon={['fab', 'linkedin']} size="xs" color="#0A79DF"/></a> </Col> </Row>
-          <Typewriter
-            onInit={(typewriter) => {
-            typewriter.typeString('Hi! My name is Sahil. ')
-            .start();
-            }}
-         />
 
         <div className="hero-chat">
-          <h1 className="hero-chat__title">Ask me anything about my experience</h1>
+          <h1 className="hero-chat__title">
+            <Typewriter
+              options={{ delay: 25 }}
+              onInit={(typewriter) => {
+                typewriter.typeString(PROMPT_TEXT).start();
+              }}
+            />
+          </h1>
           <p className="hero-chat__subtitle">
-            Projects • Work history • Skills • Fit for your role
+            Projects • Work history • Skills 
           </p>
 
           <div className="hero-chat__input-row">
+            <div className="hero-chat__mic-wrap">
+              <button
+                type="button"
+                className={`hero-chat__mic ${this.state.isListening ? 'hero-chat__mic--listening' : ''}`}
+                onClick={this.startSpeechInput}
+                title={this.state.isListening ? 'Stop listening' : 'Speak your question'}
+                aria-label={this.state.isListening ? 'Stop listening' : 'Speak your question'}
+              >
+                <FontAwesomeIcon icon={this.state.isListening ? faMicrophoneSlash : faMicrophone} />
+              </button>
+              {this.state.isListening && (
+                <span className="hero-chat__mic-tooltip" role="status">Listening…</span>
+              )}
+            </div>
             <input
               className="hero-chat__input"
               type="text"
@@ -121,6 +200,16 @@ class MainHero extends Component{
                 }
               }}
             />
+            <button
+              type="button"
+              className={`hero-chat__speak ${this.state.isSpeaking ? 'hero-chat__speak--active' : ''}`}
+              onClick={this.speakInputText}
+              title={this.state.isSpeaking ? 'Stop reading' : 'Read aloud'}
+              aria-label={this.state.isSpeaking ? 'Stop reading' : 'Read aloud'}
+              disabled={!question.trim()}
+            >
+              <FontAwesomeIcon icon={faVolumeUp} />
+            </button>
             <button
               className="hero-chat__send"
               onClick={this.handleAsk}
