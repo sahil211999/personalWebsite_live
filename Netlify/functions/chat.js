@@ -7,7 +7,7 @@ exports.handler = async (event) => {
         };
       }
   
-      const { message } = JSON.parse(event.body || "{}");
+      const { message, history = [] } = JSON.parse(event.body || "{}");
   
       if (!message) {
         return {
@@ -48,7 +48,12 @@ exports.handler = async (event) => {
   Be concise and recruiter-friendly.
   `;
   
-      const prompt = `Context:\n${profile}\n\nQuestion:\n${message}`;
+      const systemWithContext = `${system}\n\nContext (use only this to answer):\n${profile}`;
+      const inputMessages = [
+        { role: "system", content: systemWithContext },
+        ...history.map((m) => ({ role: m.role, content: m.content })),
+        { role: "user", content: message },
+      ];
   
       const r = await fetch("https://api.openai.com/v1/responses", {
         method: "POST",
@@ -58,10 +63,7 @@ exports.handler = async (event) => {
         },
         body: JSON.stringify({
           model: "gpt-4.1-mini",
-          input: [
-            { role: "system", content: system },
-            { role: "user", content: prompt },
-          ],
+          input: inputMessages,
           temperature: 0.2,
         }),
       });

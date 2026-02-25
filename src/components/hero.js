@@ -16,11 +16,11 @@ library.add(fab, faEnvelope, faMicrophone, faMicrophoneSlash, faVolumeUp);
 
 const PROMPT_TEXT = "Hi! I am Sahil's AI assistant. Ask me anything about his professional background.";
 
-async function askSahil(msg) {
+async function askSahil(msg, history = []) {
   const res = await fetch("/.netlify/functions/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: msg }),
+    body: JSON.stringify({ message: msg, history }),
   });
 
   const data = await res.json();
@@ -35,10 +35,12 @@ class MainHero extends Component{
     error: '',
     isListening: false,
     isSpeaking: false,
+    history: [],
   }
 
   recognitionRef = null;
   autoSendTimeoutRef = null;
+  lastSentResultIndex = 0;
 
   speakInputText = () => {
     if (typeof window === 'undefined' || !window.speechSynthesis) return;
@@ -69,19 +71,23 @@ class MainHero extends Component{
       this.setState({ isListening: false });
       return;
     }
+    this.lastSentResultIndex = 0;
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.lang = 'en-US';
     recognition.onresult = (e) => {
+      const startIndex = this.lastSentResultIndex;
       let transcript = '';
-      for (let i = 0; i < e.results.length; i++) {
+      for (let i = startIndex; i < e.results.length; i++) {
         transcript += e.results[i][0].transcript;
       }
       this.setState({ question: transcript });
       if (this.autoSendTimeoutRef) clearTimeout(this.autoSendTimeoutRef);
+      const resultLength = e.results.length;
       this.autoSendTimeoutRef = setTimeout(() => {
         if (!this.state.question.trim()) return;
+        this.lastSentResultIndex = resultLength;
         this.handleAsk();
         this.setState({ question: '' });
         this.autoSendTimeoutRef = null;
@@ -110,15 +116,24 @@ class MainHero extends Component{
   }
 
   handleAsk = async () => {
-    const { question } = this.state;
+    const { question, history } = this.state;
     if (!question.trim()) {
       return;
     }
 
+    const userMessage = question.trim();
     try {
       this.setState({ loading: true, error: '', answer: '' });
-      const answer = await askSahil(question.trim());
-      this.setState({ answer, loading: false });
+      const answer = await askSahil(userMessage, history);
+      this.setState((prev) => ({
+        answer,
+        loading: false,
+        history: [
+          ...prev.history,
+          { role: 'user', content: userMessage },
+          { role: 'assistant', content: answer },
+        ],
+      }));
     } catch (err) {
       this.setState({
         error: 'Sorry — something went wrong. Please try again.',
@@ -259,9 +274,14 @@ class MainHero extends Component{
             </div>
           )}
 
-          {(answer || error) && !loading && (
+          {(this.state.history.length > 0 || error) && !loading && (
             <div className="hero-chat__answer hero-chat__answer--visible">
-              {error ? <p className="hero-chat__error">{error}</p> : <p>{answer}</p>}
+              {error && <p className="hero-chat__error">{error}</p>}
+              {this.state.history.map((item, i) => (
+                <div key={i} className={item.role === 'user' ? 'hero-chat__msg hero-chat__msg--user' : 'hero-chat__msg hero-chat__msg--assistant'}>
+                  <p>{item.content}</p>
+                </div>
+              ))}
             </div>
           )}
         </div>

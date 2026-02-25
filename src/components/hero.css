@@ -212,6 +212,25 @@
   color: #fecaca;
 }
 
+.hero-chat__msg {
+  margin-bottom: 12px;
+}
+
+.hero-chat__msg:last-child {
+  margin-bottom: 0;
+}
+
+.hero-chat__msg--user p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.hero-chat__msg--assistant p {
+  color: #e5e7eb;
+  margin: 0;
+}
+
 .hero-chat__answer--visible {
   animation: heroChatFadeIn 0.35s ease-out;
 }
