@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Image from 'react-bootstrap/Image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
