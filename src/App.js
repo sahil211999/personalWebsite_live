@@ -5,7 +5,6 @@ import AboutSect from './components/about';
 import Experience from './components/experience';
 import Projects from './components/projects'
 import Leadership from './components/leadership';
-import Signature from './components/signature';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -32,10 +31,6 @@ function App() {
 
         <section id="leadership">
           <Leadership />
-        </section>
-
-        <section id="contact">
-          <Signature />
         </section>
       </div>
     </div>
