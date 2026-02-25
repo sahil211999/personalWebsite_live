@@ -6,18 +6,38 @@ import Experience from './components/experience';
 import Projects from './components/projects'
 import Leadership from './components/leadership';
 import Signature from './components/signature';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-    
-   <MainHero></MainHero>
-   <AboutSect></AboutSect>
-   <Experience></Experience>
-   <Projects> </Projects>
-   <Leadership></Leadership>
-   <Signature> </Signature>
-     
+      <Navbar />
+
+      <div style={{ paddingTop: '64px' }}>
+        <section id="home">
+          <MainHero />
+        </section>
+
+        <section id="about">
+          <AboutSect />
+        </section>
+
+        <section id="experience">
+          <Experience />
+        </section>
+
+        <section id="projects">
+          <Projects />
+        </section>
+
+        <section id="leadership">
+          <Leadership />
+        </section>
+
+        <section id="contact">
+          <Signature />
+        </section>
+      </div>
     </div>
   );
 }
