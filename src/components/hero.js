@@ -134,7 +134,7 @@ class MainHero extends Component{
             <button
               className="hero-chat__chip"
               type="button"
-              onClick={() => this.handlePresetClick('Tell me about your Axon experience.')}
+              onClick={() => this.handlePresetClick('Tell me about Sahil\'s Axon experience.')}
             >
               Axon experience
             </button>
@@ -148,7 +148,7 @@ class MainHero extends Component{
             <button
               className="hero-chat__chip"
               type="button"
-              onClick={() => this.handlePresetClick('What are your main skills?')}
+              onClick={() => this.handlePresetClick('What are Sahil\'s main skills?')}
             >
               Skills
             </button>
